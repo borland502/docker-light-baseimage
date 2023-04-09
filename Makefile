@@ -1,5 +1,5 @@
-NAME = osixia/light-baseimage
-VERSION = 1.3.3
+NAME = borland502/light-baseimage
+VERSION = 1.4
 
 .PHONY: build build-nocache test tag-latest push push-latest release git-tag-version
 

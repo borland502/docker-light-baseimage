@@ -1,4 +1,11 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
+
+ARG DATETIME=
+
+# necessary to avoid build errors with later debian security packages
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
 
 COPY . /container
 RUN /container/build.sh

@@ -24,6 +24,10 @@ MINIMAL_APT_GET_INSTALL='apt-get install -y --no-install-recommends'
 export INITRD=no
 printf no > /container/environment/INITRD
 
+# drastic, but the security and updates calls will fail the initial "apt update" due to tz and other differences
+# these entries will be restored, and security bolstered, after the minimal install finishes
+echo "deb http://deb.debian.org/debian bullseye main" > /etc/apt/sources.list
+
 apt-get update
 
 ## Fix some issues with APT packages.
